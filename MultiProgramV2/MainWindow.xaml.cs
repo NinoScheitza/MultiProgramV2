@@ -24,5 +24,11 @@ namespace MultiProgramV2
         {
             InitializeComponent();
         }
+
+        private void EncodingBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string zwischenspeicher = Textbox.Text;
+            resultLabel.Content = zwischenspeicher;
+        }
     }
 }

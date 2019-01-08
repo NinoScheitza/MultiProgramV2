@@ -30,11 +30,35 @@ namespace MultiProgramV2
         {
             resultLabel.Content = "";
             byte[] ASCIIValues = Encoding.ASCII.GetBytes(Textbox.Text);
-            foreach(byte b in ASCIIValues)
+            //int[] intArray = Array.ConvertAll(ASCIIValues, c => (int)c);
+            //for (int i = 1; i < ASCIIValues.Length; i++)
+            //{
+            //    intArray[i] = intArray[i] + 4;
+            //}
+
+            //Array.Copy(intArray, ASCIIValues, intArray.Length);
+
+            //foreach (byte b in ASCIIValues)
+            //{
+            //    resultLabel.Content = resultLabel.Content + " " + b.ToString();
+            //}
+            string txt = "";
+            for (int i = 0; i < ASCIIValues.Length; i++)
             {
-                resultLabel.Content = resultLabel.Content +  " " + b.ToString();
+                txt += " " + ASCIIValues[i].ToString();
             }
-            
+
+            int int_value = BitConverter.ToInt32(ASCIIValues, 0);
+            int_value = int_value + 1024;
+
+            byte[] new_bytes = BitConverter.GetBytes(int_value);
+            txt = "";
+            for (int i = 0; i < new_bytes.Length; i++)
+            {
+                txt = txt + " " + new_bytes[i].ToString();
+            }
+            resultLabel.Content = txt;
+
         }
 
         private void DecodingBtn_Click(object sender, RoutedEventArgs e)
@@ -44,6 +68,8 @@ namespace MultiProgramV2
             stringArray = stringArray.Skip(1).ToArray();
             byte[] byteArray = Array.ConvertAll(stringArray, Byte.Parse);
             resultLabel2.Content = ascii.GetString(byteArray);
+
+
         }
 
         private void CopyToClipboard_Click(object sender, RoutedEventArgs e)

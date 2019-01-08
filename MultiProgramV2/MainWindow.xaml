@@ -9,7 +9,12 @@
     <Grid>
         <TextBox x:Name="Textbox" HorizontalAlignment="Left" Height="90" Margin="10,10,0,0" TextWrapping="Wrap" Text="Text eingeben.." VerticalAlignment="Top" Width="173"/>
         <Button x:Name="encodingBtn" Content="Verschlüsseln" HorizontalAlignment="Left" Margin="215,38,0,0" VerticalAlignment="Top" Width="88" Height="28" Click="EncodingBtn_Click"/>
-        <Label x:Name="resultLabel" Content="Ergebnis" HorizontalAlignment="Left" Margin="359,10,0,0" VerticalAlignment="Top" Height="90" Width="173"/>
+        <Label x:Name="resultLabel" Content="Ergebnis" HorizontalAlignment="Left" Margin="308,10,0,0" VerticalAlignment="Top" Height="90" Width="224" BorderBrush="Black"
+               BorderThickness="2"/>
+        <TextBox x:Name="TextBox2" HorizontalAlignment="Left" Height="90" Margin="10,166,0,0" TextWrapping="Wrap" Text="Text eingeben.." VerticalAlignment="Top" Width="173"/>
+        <Button x:Name="decodingBtn" Content="Entschlüsseln" HorizontalAlignment="Left" Margin="215,198,0,0" VerticalAlignment="Top" Width="88" Height="28" Click="DecodingBtn_Click"/>
+        <Label x:Name="resultLabel2" Content="Ergebnis" HorizontalAlignment="Left" Margin="359,166,0,0" VerticalAlignment="Top" Height="90" Width="173"/>
+        <Button x:Name="copyToClipboard" Content="Kopieren" HorizontalAlignment="Left" Margin="417,123,0,0" VerticalAlignment="Top" Width="75" Click="CopyToClipboard_Click"/>
 
     </Grid>
 </Window>

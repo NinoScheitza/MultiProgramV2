@@ -20,6 +20,7 @@ namespace MultiProgramV2
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,8 +28,27 @@ namespace MultiProgramV2
 
         private void EncodingBtn_Click(object sender, RoutedEventArgs e)
         {
-            string zwischenspeicher = Textbox.Text;
-            resultLabel.Content = zwischenspeicher;
+            resultLabel.Content = "";
+            byte[] ASCIIValues = Encoding.ASCII.GetBytes(Textbox.Text);
+            foreach(byte b in ASCIIValues)
+            {
+                resultLabel.Content = resultLabel.Content +  " " + b.ToString();
+            }
+            
+        }
+
+        private void DecodingBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ASCIIEncoding ascii = new ASCIIEncoding();
+            string[] stringArray = TextBox2.Text.Split(' ');
+            stringArray = stringArray.Skip(1).ToArray();
+            byte[] byteArray = Array.ConvertAll(stringArray, Byte.Parse);
+            resultLabel2.Content = ascii.GetString(byteArray);
+        }
+
+        private void CopyToClipboard_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.SetText(resultLabel.Content.ToString());
         }
     }
 }
